@@ -31,4 +31,11 @@ app.use(
 app.use(express.static("public"));
 app.use(cookieParser());
 
+// import routes
+// Actually I am exporting the default export from user.routes.js as "router" and then I am renaming it to "userRoutes" while importing it here in app.js. We can only do this when we are importing a default export, if it was a named export then we would have to import it with the same name as it was exported.
+import userRoutes from "./routes/user.routes.js";
+
+// use routes
+app.use("/api/v1/users", userRoutes);
+
 export { app };
